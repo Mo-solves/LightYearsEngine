@@ -1,12 +1,14 @@
 #include "framework/Application.h"
 #include "framework/Core.h"
+#include "framework/World.h"
 
 namespace ly
 {
 	Application::Application()
 		:mWindow{sf::VideoMode(900,900), "Light Years"},
-		mTargerFrameRate{30.f},
-		mTickClock{}
+		mTargerFrameRate{60.f},
+		mTickClock{},
+		currentWorld{nullptr}
 	{
 		
 	}
@@ -32,21 +34,23 @@ namespace ly
 			while (accumulatedTime > targetDeltaTime)
 			{
 				accumulatedTime -= targetDeltaTime;
-				Tick(targetDeltaTime);
+				TickInternal(targetDeltaTime);
 				RenderInternal();
 			}
-			
-			// USING MACRO TO PRINT
-			LOG("ticking at framerate: %f", 1.f / frameDeltaTime);
 
 		}
 	}
 	void Application::TickInternal(float deltaTime)
 	{
+		Tick(deltaTime);
+
+		if (currentWorld)
+		{
+			currentWorld->BeginPlayInterval();
+			currentWorld->TickInternal(deltaTime);
+		}
 	}
-	void Application::Tick(float deltaTime)
-	{
-	}
+	
 	void Application::RenderInternal()
 	{
 		mWindow.clear();
@@ -65,5 +69,10 @@ namespace ly
 		rect.setPosition(mWindow.getSize().x / 2.f, mWindow.getSize().y / 2.f);
 
 		mWindow.draw(rect);
+	}
+
+	void Application::Tick(float deltaTime)
+	{
+
 	}
 }
