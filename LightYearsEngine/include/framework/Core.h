@@ -1,9 +1,31 @@
 #pragma once
 
 #include <stdio.h>
+#include <memory>
+#include <map>
+#include <unordered_map>
 
 namespace ly
 {
-	//Macro
+	template<typename T>
+	using unique = std::unique_ptr<T>;
+
+	template<typename T>
+	using shared = std::shared_ptr<T>;
+
+	template<typename T>
+	using weak = std::weak_ptr<T>;
+
+	template<typename T>
+	using List = std::vector<T>;
+															// This means Ascending order
+	template<typename keyType, typename valType, typename Pr = std::less<keyType>>
+	using Map = std::map<keyType, valType, Pr>;
+
+														// This is the hash
+	template<typename keyType, typename valType, typename hasher = std::hash<keyType>>
+	using Dictionary = std::unordered_map<keyType, valType, hasher>;
+
+//Macro
 #define LOG(M, ...) printf(M "\n", ##__VA_ARGS__);
 }
