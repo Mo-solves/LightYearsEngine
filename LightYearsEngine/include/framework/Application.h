@@ -33,6 +33,7 @@ namespace ly
 	{
 		shared<WorldType> newWorld{ new WorldType{this} };
 		currentWorld = newWorld;
+		currentWorld->BeginPlayInterval();
 		return newWorld;
 	}
 }
