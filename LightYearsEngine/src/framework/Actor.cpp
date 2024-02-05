@@ -35,13 +35,11 @@ namespace ly
 	// This is for the child class to override
 	void Actor::BeginPlay()
 	{
-		LOG("Actor begin play");
 	}
 
 	// This is for the child class to override
 	void Actor::Tick(float deltaTime)
 	{
-		LOG("Actor Ticking");
 	}
 
 	void Actor::SetTexture(const std::string& texturePath)
