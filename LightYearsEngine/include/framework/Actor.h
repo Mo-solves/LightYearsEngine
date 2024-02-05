@@ -2,6 +2,7 @@
 #include "framework/Object.h"
 #include <SFML/Graphics.hpp>
 #include "framework/Object.h"
+#include "framework/Core.h"
 
 namespace ly
 {
@@ -23,6 +24,6 @@ namespace ly
 		bool mHasBeganPlay;
 
 		sf::Sprite mSprite;
-		sf::Texture mTexture;
+		shared<sf::Texture> mTexture;
 	};
 }
