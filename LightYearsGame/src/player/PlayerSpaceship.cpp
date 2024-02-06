@@ -1,12 +1,13 @@
 #include "player/PlayerSpaceship.h"
 #include <SFML/System.hpp>
+#include "framework/MathUtility.h"
 
 namespace ly
 {
 	PlayerSpaceship::PlayerSpaceship(World* owningWorld, const std::string& path)
-		: Spaceship{owningWorld, path},
+		: Spaceship{ owningWorld, path },
 		mMoveInput{},
-		mSpeed{200.f}
+		mSpeed{ 200.f }
 	{
 	}
 
@@ -27,7 +28,8 @@ namespace ly
 		{
 			mMoveInput.y = 1.f;
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			mMoveInput.x = -1.f;
 		}
@@ -35,6 +37,14 @@ namespace ly
 		{
 			mMoveInput.x = 1.f;
 		}
+
+		NormalizeInput();
+	}
+
+	void PlayerSpaceship::NormalizeInput()
+	{
+		Normalize(mMoveInput);
+		LOG("move input is now: %f, %f", mMoveInput.x, mMoveInput.y);
 	}
 
 	void PlayerSpaceship::ConsumeInput(float deltaTime)
