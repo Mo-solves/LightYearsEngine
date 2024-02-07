@@ -1,0 +1,119 @@
+[33mcommit 6c1d335b713ea05fa859c3d038e209f50f066a00[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/spaceship-and-player[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mspaceship-and-player[m[33m)[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Feb 6 20:19:32 2024 +0300
+
+    Prevent player from going beyond the window
+
+[33mcommit 19f242a85c66d51e7f6a00ed4b0a0cf207099a43[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Feb 6 19:35:55 2024 +0300
+
+    Normalize player input
+
+[33mcommit acc19ae66b7c776b37e6607c8ac22874f9b35c13[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Feb 6 19:13:20 2024 +0300
+
+    Player Spaceship and move input
+
+[33mcommit 6122bf61b4fb650525aea2575dc9c184c5a71334[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Feb 6 18:03:23 2024 +0300
+
+    create spaceship and playerSpaceship classes
+
+[33mcommit cb3ad9c8e69dcc1ffd4b6a82940867f42f6b56a8[m[33m ([m[1;31morigin/light-years-engine[m[33m, [m[1;32mlight-years-engine[m[33m)[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Mon Feb 5 19:04:43 2024 +0300
+
+    Implement the actor transformation interface
+
+[33mcommit eed0fa30d8f85f893e3c2d705de66f532a5b5885[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Mon Feb 5 17:28:03 2024 +0300
+
+    Setup Asset Clean Cycle
+
+[33mcommit ad2b4568a1c153c30e49773baac93c990051f500[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Mon Feb 5 17:08:54 2024 +0300
+
+    create the Asset Manager
+
+[33mcommit a2b8867c44ad85c515d6bd3c4e9f8f3d65c35f97[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Mon Feb 5 11:25:50 2024 +0300
+
+    Use a config file to Setup Asset Path
+
+[33mcommit 5ad6ce9a1c07e987aaa023f672bd9b6d234fc423[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Sun Feb 4 17:33:06 2024 +0300
+
+    Add Rendering Sprite to Actor
+
+[33mcommit dfaef1219eebfb0f0ece29215a1c31013bc9cab0[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Sat Feb 3 12:46:02 2024 +0300
+
+    The Object Class and Handle Object Destruction
+
+[33mcommit 56759c997c138a30c0b0b515a9d49f448f190c0b[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Sat Feb 3 12:15:58 2024 +0300
+
+    Implement the Actor class
+
+[33mcommit 5f5d9019fff79fcf6dcc37fb2ddc41977932563c[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Fri Feb 2 19:27:55 2024 +0300
+
+    Implement World Class
+
+[33mcommit a48f01e389250b997c710f0566eb8b7ee4124e60[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Fri Feb 2 17:34:27 2024 +0300
+
+    Defining common Data Types
+
+[33mcommit 23d78d7283bb21847fea6cfa39a3acd22991c823[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Fri Feb 2 15:03:04 2024 +0300
+
+    create the core and the logging macro
+
+[33mcommit 8f628d6636065ef22b81d657c07ac2945505b612[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Wed Jan 31 10:53:45 2024 +0300
+
+    Entry point and Separate Engine and Game Code
+
+[33mcommit 889be3e601fccfd9ce0881854e109ed55fb25711[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Wed Jan 31 10:02:49 2024 +0300
+
+    Set up the Rendering
+
+[33mcommit 1e6f675647b221d954cf17b57f5720072e911510[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Wed Jan 31 09:39:49 2024 +0300
+
+    Set up the game loop
+
+[33mcommit f69f1a77544d81022db4060d39d181ae31476a28[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Wed Jan 31 09:01:40 2024 +0300
+
+    Set up the application class
+
+[33mcommit 5489485120e4271f6c8c5c882f1a927243fa34ea[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Jan 30 20:12:42 2024 +0300
+
+    Added and linked SFML library into the project
+
+[33mcommit c49f59994336a16a0038f245764b11c334701402[m
+Author: Mohamed Abdi <mosolves147@gmail.com>
+Date:   Tue Jan 30 17:26:35 2024 +0300
+
+    Project created
