@@ -22,7 +22,7 @@ namespace ly
 		testPlayerSpaceship = newWorld.lock()->SpawnActor<PlayerSpaceship>();
 		testPlayerSpaceship.lock()->SetTexture("SpaceShooterRedux/PNG/playerShip1_blue.png");
 		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.f, 490.f));
-		testPlayerSpaceship.lock()->SetActorRotation(360.f);
+		testPlayerSpaceship.lock()->SetActorRotation(-90.f);
 	}
 	void GameApplication::Tick(float deltaTime)
 	{
