@@ -22,15 +22,20 @@ namespace ly
 		void RemoveListener(b2Body* bodyToRemove);
 		float GetPhysicsScale() const { return mPhysicsScale; }
 
+		static void Cleanup();
+
 	protected:
 		PhysicsSystem();
 
 	private:
+		void processPendingRemoveListeners();
 		static unique<PhysicsSystem> physicsSystem;
 		b2World mPhysicsWorld;
 		float mPhysicsScale;
 		int mVelocityIterations;
 		int mPositionIterations;
 		PhysicsContactListener mContactListener;
+
+		Set<b2Body*> mPendingRemoveListeners;
 	};
 } 
