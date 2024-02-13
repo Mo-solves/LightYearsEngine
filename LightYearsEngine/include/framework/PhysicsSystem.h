@@ -6,6 +6,13 @@
 namespace ly
 {
 	class Actor;
+
+	class PhysicsContactListener : public b2ContactListener
+	{
+		virtual void BeginContact(b2Contact* contact) override;
+		virtual void EndContact(b2Contact* contact) override;
+	};
+
 	class PhysicsSystem
 	{
 	public:
@@ -24,5 +31,6 @@ namespace ly
 		float mPhysicsScale;
 		int mVelocityIterations;
 		int mPositionIterations;
+		PhysicsContactListener mContactListener;
 	};
 } 
