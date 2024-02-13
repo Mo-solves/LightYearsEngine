@@ -4,6 +4,7 @@
 #include "framework/Object.h"
 #include "framework/Core.h"
 
+class b2Body;
 namespace ly
 {
 	class World;
@@ -35,12 +36,20 @@ namespace ly
 
 		bool IsActorOutOfWindowBounds() const;
 
+		void SetEnablePhysics(bool enable);
+
 	private:
+		void InitializedPhysics();
+		void UnIntializedPhysics();
 		void CenterPivot();
+		void UpdatePhysicsBodyTransform();
 		World* mOwningWorld;
 		bool mHasBeganPlay;
 
 		sf::Sprite mSprite;
 		shared<sf::Texture> mTexture;
+
+		b2Body* mPhysicsBody;
+		bool mPhysicsEnabled;
 	};
 }

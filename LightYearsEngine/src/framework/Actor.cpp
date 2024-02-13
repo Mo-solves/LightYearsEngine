@@ -1,15 +1,21 @@
+#include <box2d/b2_body.h>
+
 #include "framework/Actor.h"
 #include "framework/AssetManager.h"
 #include "framework/MathUtility.h"
 #include "framework/World.h"
+#include "framework/PhysicsSystem.h"
+
 
 namespace ly
 {
 	Actor::Actor(World* owningWorld, const std::string& texturePath)
-		:mOwningWorld{owningWorld},
-		mHasBeganPlay{false},
+		:mOwningWorld{ owningWorld },
+		mHasBeganPlay{ false },
 		mSprite{},
-		mTexture{}
+		mTexture{},
+		mPhysicsBody{nullptr},
+		mPhysicsEnabled{false}
 	{
 		SetTexture(texturePath);
 	}
@@ -55,7 +61,7 @@ namespace ly
 		int textureWidth = mTexture->getSize().x;
 		int textureHeight = mTexture->getSize().y;
 
-		mSprite.setTextureRect(sf::IntRect(sf::Vector2i{}, sf::Vector2i{textureWidth, textureHeight}));
+		mSprite.setTextureRect(sf::IntRect(sf::Vector2i{}, sf::Vector2i{ textureWidth, textureHeight }));
 		CenterPivot();
 	}
 
@@ -150,9 +156,51 @@ namespace ly
 		return false;
 	}
 
+	void Actor::SetEnablePhysics(bool enable)
+	{
+		mPhysicsEnabled = enable;
+
+		if (mPhysicsEnabled)
+		{
+			InitializedPhysics();
+		}
+		else
+		{
+			UnIntializedPhysics();
+		}
+	}
+
+	void Actor::InitializedPhysics()
+	{
+		if (!mPhysicsBody)
+		{
+			mPhysicsBody = PhysicsSystem::Get().AddListener(this);
+		}
+	}
+
+	void Actor::UnIntializedPhysics()
+	{
+		if (mPhysicsBody)
+		{
+			PhysicsSystem::Get().RemoveListener(mPhysicsBody);
+		}
+	}
+
 	void Actor::CenterPivot()
 	{
 		sf::FloatRect bound = mSprite.getGlobalBounds();
 		mSprite.setOrigin(bound.width / 2.f, bound.height / 2.f);
+	}
+
+	void Actor::UpdatePhysicsBodyTransform()
+	{
+		if (mPhysicsBody)
+		{
+			float physicsScale = PhysicsSystem::Get().GetPhysicsScale();
+			b2Vec2 pos(GetActorLocation().x * physicsScale, GetActorLocation().y * physicsScale);
+			float rotation = DegreesToRadians(GetActorRotation());
+
+			mPhysicsBody->SetTransform(pos, rotation);
+		}
 	}
 }
