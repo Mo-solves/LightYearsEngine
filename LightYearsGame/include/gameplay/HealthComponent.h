@@ -13,10 +13,12 @@ namespace ly
 
 		Delegate<float, float, float> onHealthChanged;
 
+		Delegate<float, float, float> onTakeDamage;
+		Delegate<> onHealthEmpty;
+
 	private:
 		void TakenDamage(float amt);
 		void HealthEmpty();
-		void HealthRegen(float amt);
 		float mHealth;
 		float mMaxHealth;
 	};
