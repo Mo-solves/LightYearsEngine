@@ -27,6 +27,8 @@ namespace ly
 	{
 		Actor::BeginPlay();
 		SetEnablePhysics(true);
+
+		weak<Object> selfRef = GetWeakRef();
 	}
 }
 
