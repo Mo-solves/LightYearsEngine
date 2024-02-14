@@ -29,11 +29,12 @@ namespace ly
 		SetEnablePhysics(true);
 
 		mHealthComp.onHealthChanged.BindAction(GetWeakRef(), &Spaceship::OnHealthChanged);
+		mHealthComp.onHealthChanged.BroadCast(11, 88, 100);
 	}
 
 	void Spaceship::OnHealthChanged(float amt, float health, float maxHealth)
 	{
-
+		LOG("health changed by: %f, and is now: %f/%f", amt, health, maxHealth);
 	}
 }
 
