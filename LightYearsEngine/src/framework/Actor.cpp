@@ -202,6 +202,7 @@ namespace ly
 
 	void Actor::ApplyDamage(float amt)
 	{
+
 	}
 
 	void Actor::InitializedPhysics()

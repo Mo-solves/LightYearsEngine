@@ -1,17 +1,22 @@
 #include "spaceship/Spaceship.h"
+#include "framework/MathUtility.h"
 
 namespace ly
 {
 	Spaceship::Spaceship(World* owningWorld, const std::string& texturePath)
 		:Actor{owningWorld, texturePath},
 		mVelocity{},
-		mHealthComp{100.f, 100.f}
+		mHealthComp{100.f, 100.f},
+		mBlinkTime{0},
+		mBlinkDuration{0.2f},
+		mBlinkColorOffset{255, 0, 0, 255}
 	{
 	}
 	void Spaceship::Tick(float deltaTime)
 	{
 		Actor::Tick(deltaTime);
 		AddActorLocationOffset(GetVelocity() * deltaTime);
+		UpdatedBlink(deltaTime);
 	}
 
 	void Spaceship::SetVelocity(const sf::Vector2f& newVel)
@@ -38,6 +43,25 @@ namespace ly
 		mHealthComp.ChangeHealth(-amt);
 	}
 
+	void Spaceship::Blink()
+	{
+		if (mBlinkTime == 0)
+		{
+			mBlinkTime = mBlinkDuration;
+		}
+	}
+
+	void Spaceship::UpdatedBlink(float deltaTime)
+	{
+		if (mBlinkTime > 0)
+		{
+			mBlinkTime -= deltaTime;
+			mBlinkTime = mBlinkTime > 0 ? mBlinkTime : 0.f;
+
+			GetSprite().setColor(LerpColor(sf::Color::White, mBlinkColorOffset, mBlinkTime));
+		}
+	}
+
 	void Spaceship::OnHealthChanged(float amt, float health, float maxHealth)
 	{
 
@@ -45,7 +69,7 @@ namespace ly
 
 	void Spaceship::OnTakenDamage(float amt, float health, float maxHealth)
 	{
-
+		Blink();
 	}
 
 	void Spaceship::Blow()
