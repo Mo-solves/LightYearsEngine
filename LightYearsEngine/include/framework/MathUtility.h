@@ -39,4 +39,8 @@ namespace ly
 
 	float LerpFloat(float a, float b, float alpha);
 
+	float RandomRange(float min, float max);
+
+	sf::Vector2f RandomUnitVactor();
+
 }

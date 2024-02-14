@@ -1,3 +1,4 @@
+#include <random>
 #include "framework/MathUtility.h"
 
 namespace ly
@@ -26,6 +27,26 @@ namespace ly
 		if (alpha < 0) alpha = 0;
 
 		return a + (b - a) * alpha;
+	}
+
+	float RandomRange(float min, float max)
+	{
+		std::random_device rd;
+		std::mt19937 gen(rd());
+
+		std::uniform_real_distribution<float> distribution{ min,max };
+
+		return distribution(gen);
+	}
+
+	sf::Vector2f RandomUnitVactor()
+	{
+		float randomX = RandomRange(-1, 1);
+		float randomY = RandomRange(-1, 1);
+		sf::Vector2f randVec{ randomX, randomY };
+		Normalize(randVec);
+
+		return randVec;
 	}
 
 	sf::Color LerpColor(const sf::Color& a, const sf::Color& b, float alpha)
