@@ -3,11 +3,11 @@
 namespace ly
 {
 	Timer::Timer(weak<Object> weakRef, std::function<void()> callback, float duration, bool repeat)
-		:mListener{weakRef, callback},
-		mDuration{duration},
-		mRepeat{repeat},
-		mTimeCounter{0.f},
-		mIsExpired{false}
+		:mListener{ weakRef, callback },
+		mDuration{ duration },
+		mRepeat{ repeat },
+		mTimeCounter{ 0.f },
+		mIsExpired{ false }
 	{
 	}
 
@@ -44,6 +44,7 @@ namespace ly
 		mIsExpired = true;
 	}
 
+	unsigned int TimerManager::timerIndexCounter;
 	unique<TimerManager> TimerManager::timerManager{ nullptr };
 
 	TimerManager::TimerManager() : mTimers{}
@@ -63,9 +64,27 @@ namespace ly
 
 	void TimerManager::UpdateTimer(float deltaTime)
 	{
-		for (Timer& timer : mTimers)
+		for (auto iter = mTimers.begin(); iter != mTimers.end();)
 		{
-			timer.TickTime(deltaTime);
+			if (iter->second.Expired())
+			{
+				iter = mTimers.erase(iter);
+			}
+			else
+			{
+				iter->second.TickTime(deltaTime);
+				++iter;
+			}
+		}
+	}
+
+	void TimerManager::ClearTimer(unsigned int timerIndex)
+	{
+		auto iter = mTimers.find(timerIndex);
+
+		if (iter != mTimers.end())
+		{
+			iter->second.SetExpired();
 		}
 	}
 }

@@ -10,7 +10,7 @@
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
-		: World{owningApp}
+		: World{ owningApp }
 	{
 		testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
 		testPlayerSpaceship.lock()->SetTexture("SpaceShooterRedux/PNG/playerShip1_blue.png");
@@ -24,11 +24,12 @@ namespace ly
 
 	void GameLevelOne::BeginPlay()
 	{
-		TimerManager::Get().SetTimer(GetWeakRef(), &GameLevelOne::TimerCallBack_Test, 2, true);
+		timerIndex_Test = TimerManager::Get().SetTimer(GetWeakRef(), &GameLevelOne::TimerCallBack_Test, 2, true);
 	}
 
 	void GameLevelOne::TimerCallBack_Test()
 	{
 		LOG("callback called!");
+		TimerManager::Get().ClearTimer(timerIndex_Test);
 	}
 }
