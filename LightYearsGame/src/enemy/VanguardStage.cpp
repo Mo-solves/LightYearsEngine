@@ -1,4 +1,5 @@
 #include "enemy/Vanguard.h"
+#include "enemy/TwinBlade.h"
 #include "enemy/VanguardStage.h"
 #include "framework/World.h"
 
@@ -37,7 +38,7 @@ namespace ly
 
 	void VanguardStage::SpawnVanguard()
 	{
-		weak<Vanguard> newVanguard = GetWorld()->SpawnActor<Vanguard>();
+		weak<TwinBlade> newVanguard = GetWorld()->SpawnActor<TwinBlade>();
 		newVanguard.lock()->SetActorLocation(mSpawnLoc);
 		++mCurrentRowVanguardCount;
 
