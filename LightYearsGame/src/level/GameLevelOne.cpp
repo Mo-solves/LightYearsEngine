@@ -10,6 +10,8 @@
 #include "gameplay/WaitStage.h"
 #include "player/PlayerSpaceship.h"
 
+#include "enemy/Hexagon.h"
+
 namespace ly
 {
 	GameLevelOne::GameLevelOne(Application* owningApp)
