@@ -8,9 +8,9 @@ namespace ly
 		const std::string& texturePath, 
 		float rotationSpeed)
 		:EnemySpaceship{ owningWorld, texturePath },
-		mShooter1{ new BulletShooter{this, 1.f, sf::Vector2f{0.f, 0.f}, -60.f } },
-		mShooter2{ new BulletShooter{this, 1.f, sf::Vector2f{0.f, 0.f}, 60.f } },
-		mShooter3{ new BulletShooter{this, 1.f, sf::Vector2f{0.f, 0.f}, 180.f } },
+		mShooter1{ new BulletShooter{this, .5f, sf::Vector2f{0.f, 0.f}, -60.f } },
+		mShooter2{ new BulletShooter{this, .5f, sf::Vector2f{0.f, 0.f}, 60.f } },
+		mShooter3{ new BulletShooter{this, .5f, sf::Vector2f{0.f, 0.f}, 180.f } },
 		mRotationSpeed{rotationSpeed}
 	{
 		SetVelocity(velocity);

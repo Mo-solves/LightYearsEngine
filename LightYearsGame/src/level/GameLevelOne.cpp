@@ -9,6 +9,7 @@
 #include "gameplay/GameStage.h"
 #include "gameplay/WaitStage.h"
 #include "enemy/HexagonStage.h"
+#include "enemy/UFOStage.h"
 #include "player/PlayerSpaceship.h"
 
 #include "enemy/UFO.h"
@@ -27,14 +28,15 @@ namespace ly
 
 	void GameLevelOne::BeginPlay()
 	{
-		weak<UFO> testUFO = SpawnActor<UFO>(sf::Vector2f{0.f, 0.f});
-		testUFO.lock()->SetActorLocation({ GetWindowSize().x / 2.f, GetWindowSize().y / 2.f
-			});
+		
 	}
 
 
 	void GameLevelOne::InitGameStages()
 	{
+		AddStage(shared<UFOStage>{new UFOStage{ this }});
+
+
 		AddStage(shared<WaitStage>{new WaitStage{this, 5.f}});
 		AddStage(shared<VanguardStage>{new VanguardStage{this}});
 
