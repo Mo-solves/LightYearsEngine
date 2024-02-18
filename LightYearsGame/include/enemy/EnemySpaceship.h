@@ -1,6 +1,7 @@
 #pragma once
 
 #include "spaceship/Spaceship.h"
+#include "player/Reward.h"
 
 namespace ly
 {
@@ -8,11 +9,21 @@ namespace ly
 	{
 	public:
 		EnemySpaceship(World* owningWorld, const std::string& texturePath,
-			float collisionDamage = 200.f);
+			float collisionDamage = 200.f,
+			const List<RewardFactoryFunc> rewards = {
+				CreateHealthReward,
+				CreateThreeWayShooterReward,
+				CreateFrontalWiperReward
+
+			});
+
 		virtual void Tick(float deltaTime);
 
 	private:
+		void SpawnReward();
 		float mCollisionDamage;
 		virtual void OnActorBeginOverlap(Actor* other);
+		virtual void Blew() override;
+		List<RewardFactoryFunc> mRewardFactories;
 	};
 }
