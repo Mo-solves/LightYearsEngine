@@ -12,6 +12,8 @@
 #include "enemy/UFOStage.h"
 #include "player/PlayerSpaceship.h"
 
+#include "player/PlayerManager.h"
+
 #include "enemy/UFO.h"
 
 
@@ -20,15 +22,13 @@ namespace ly
 	GameLevelOne::GameLevelOne(Application* owningApp)
 		: World{ owningApp }
 	{
-		testPlayerSpaceship = SpawnActor<PlayerSpaceship>();
-		testPlayerSpaceship.lock()->SetTexture("SpaceShooterRedux/PNG/playerShip1_blue.png");
-		testPlayerSpaceship.lock()->SetActorLocation(sf::Vector2f(300.f, 490.f));
-		testPlayerSpaceship.lock()->SetActorRotation(-90.f);
+		
 	}
 
 	void GameLevelOne::BeginPlay()
 	{
-		
+		Player newPlayer = PlayerManager::Get().CreateNewPlayer();
+		newPlayer.SpawnSpaceship(this);
 	}
 
 
