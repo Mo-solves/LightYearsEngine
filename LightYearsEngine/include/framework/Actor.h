@@ -1,8 +1,9 @@
 #pragma once
-#include "framework/Object.h"
 #include <SFML/Graphics.hpp>
-#include "framework/Object.h"
+
 #include "framework/Core.h"
+#include "framework/Delegate.h"
+#include "framework/Object.h"
 
 class b2Body;
 namespace ly
@@ -55,6 +56,8 @@ namespace ly
 
 		sf::Sprite& GetSprite() { return mSprite; }
 		const sf::Sprite& GetSprite() const { return mSprite; }
+
+		Delegate<Actor*> onActorDestroyed;
 
 	private:
 		void InitializedPhysics();

@@ -187,6 +187,7 @@ namespace ly
 	void Actor::Destroy()
 	{
 		UnIntializedPhysics();
+		onActorDestroyed.BroadCast(this);
 		Object::Destroy();
 	}
 
